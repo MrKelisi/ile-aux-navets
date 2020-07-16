@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 360px;
+  min-height: 100vh;
+  font-family: Product-Sans, sans-serif;
+  background: repeating-linear-gradient(-10deg, #F5F2E3, #F5F2E3 1em, #f4eede 1em, #f4eede 1.65em);
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+.btn-ac {
+  padding: 0.75em 1.25em;
+  font-size: 1.25em;
+  color: #FFFFFF;
+  background: #0DC5BB;
+  border: none;
+  border-radius: 2em;
+  cursor: pointer;
+  transition: 0.1s ease;
+}
+.btn-ac:hover,
+.btn-ac:focus {
+  outline: none;
+  transform: scale(1.1);
+  background: #3EDAC2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  /*background: repeating-linear-gradient(-30deg, #3EDAC2, #42e5cc 0.5em, #3EDAC2 1em);*/
+}
+
+@font-face {
+  font-family: "Icomoon";
+  src: url("assets/fonts/icomoon.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Product-Sans";
+  src: url("assets/fonts/product_sans.ttf") format("truetype");
+}
+
+
+i.icomoon {
+  font-style: normal;
+  font-family: Icomoon, sans-serif;
+}
+i.icomoon.ico-leaf:before {
+  content: "\e900";
+}
+i.icomoon.ico-turnip:before {
+  content: "\e901";
+}
+i.icomoon.ico-bell:before {
+  content: "\e902";
+}
+
+
+.green {
+  background: #89C68A!important;
+}
+.blue {
+  background: #8A9CF2!important;
+}
+.yellow {
+  background: #F7CC64!important;
+}
+.orange {
+  background: #E58F6C!important;
+}
+.pink {
+  background: #F9A7B3!important;
+}
+.taupe {
+  background: #e0c49a!important;
+}
+.gray {
+  background: #abb2c7!important;
+}

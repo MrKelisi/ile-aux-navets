@@ -1,0 +1,33 @@
+.heading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background: #abb2c7;
+  box-shadow: 0 20px 15px rgba(0,0,0,0.05)
+}
+.heading::after {
+  content: "";
+  width: 110%;
+  height: 1em;
+  border-bottom-right-radius: 50% 100%;
+  border-bottom-left-radius: 50% 100%;
+  position: absolute;
+  left: -5%;
+  bottom: -1em;
+  background: inherit;
+}
+.heading span {
+  display: block;
+  padding: 1.25em 1em 0.5em 1em;
+}
+.heading span img {
+  height: 2em;
+  vertical-align: -50%;
+  margin: 0 0.5em;
+}
+
+.top-margin {
+  height: 6em;
+}

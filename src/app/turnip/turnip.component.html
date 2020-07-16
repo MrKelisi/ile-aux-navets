@@ -1,0 +1,29 @@
+<app-app-header [appColor]="'gray'" [appTitle]="'turnip'" [appName]="'Cours du navet'"></app-app-header>
+
+<table *ngIf="week">
+  <thead>
+    <tr>
+      <th colspan="14"><i class="icomoon ico-turnip"></i> Semaine du {{dateAchat.getDate()}}/{{(dateAchat.getMonth()+1)}}/{{dateAchat.getFullYear()}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background: #e0dbcf">
+      <th colspan="2">DIMANCHE</th>
+      <th colspan="2">LUNDI</th>
+      <th colspan="2">MARDI</th>
+      <th colspan="2">MERCREDI</th>
+      <th colspan="2">JEUDI</th>
+      <th colspan="2">VENDREDI</th>
+      <th colspan="2">SAMEDI</th>
+    </tr>
+    <tr>
+      <td>{{week.sun_am}}</td><td>{{week.sun_pm}}</td>
+      <td>{{week.mon_am}}</td><td>{{week.mon_pm}}</td>
+      <td>{{week.tue_am}}</td><td>{{week.tue_pm}}</td>
+      <td>{{week.wed_am}}</td><td>{{week.wed_pm}}</td>
+      <td>{{week.thu_am}}</td><td>{{week.thu_pm}}</td>
+      <td>{{week.fri_am}}</td><td>{{week.fri_pm}}</td>
+      <td>{{week.sat_am}}</td><td>{{week.sat_pm}}</td>
+    </tr>
+  </tbody>
+</table>

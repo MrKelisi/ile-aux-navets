@@ -1,0 +1,27 @@
+table {
+  border: solid 3px #abb2c7;
+  border-spacing: 0;
+  margin: 1em;
+}
+thead {
+  background: #abb2c7;
+}
+thead th {
+  padding: 0.5em;
+}
+tbody th, tbody td {
+  padding: 0.25em;
+  border-right: solid 1px #abb2c7;
+  border-bottom: solid 1px #abb2c7;
+}
+tbody td {
+  background: #F5F2E3;
+}
+tbody td:first-of-type {
+  font-weight: bold;
+}
+
+td {
+  min-width: 2.5em;
+  text-align: center;
+}

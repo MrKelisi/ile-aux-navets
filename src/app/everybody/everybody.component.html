@@ -1,0 +1,13 @@
+<app-app-header [appColor]="'blue'" [appTitle]="'everybody'" [appName]="'Tout le monde'"></app-app-header>
+
+<div id="friends">
+  <ul>
+    <li *ngFor="let user of users" routerLink="/profile/{{user.username}}">
+      <img src="{{environment.api_url}}/photo/{{user.username}}" alt="profile picture"/>
+      <div class="friends-wrapper">
+        <span class="name"><b>{{user.display_name}}</b> (@{{user.username}})</span>
+        <span class="course" *ngIf="!user.bells">1 <i class="icomoon ico-turnip"></i> = {{user.bells}} <i class="icomoon ico-bell"></i></span>
+      </div>
+    </li>
+  </ul>
+</div>

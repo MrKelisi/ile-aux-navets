@@ -1,0 +1,123 @@
+#home {
+  min-height: 100vh;
+  padding: 3em 12vw;
+  box-sizing: border-box;
+  background: #F8F5E6;
+  animation: entree 0.2s ease-out;
+}
+
+#top-infos {
+  display: flex;
+  font-size: 1.1em;
+  color: #ccc4a8;
+}
+#top-infos span {
+  flex: 1 1 0;
+}
+#top-infos span:nth-child(2) {
+  text-align: right;
+}
+#top-infos i.icomoon {
+  vertical-align: -5%;
+}
+
+#title {
+  display: block;
+  margin: 2rem 0 1.5rem 0;
+  font-size: 8vw;
+  font-weight: bold;
+  text-align: center;
+  color: #756855;
+}
+
+#apps {
+  display: grid;
+  grid-gap: 7%;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.app {
+  display: block;
+  position: relative;
+}
+.app input {
+  width: 100%;
+  padding: 15%;
+  border-radius: 35%;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  transition: 0.1s ease;
+}
+.app input:active {
+  padding: 13%;
+  transform: scale(0.85);
+}
+.app input:focus {
+  outline: none;
+  padding: 12%;
+  transform: scale(0.9);
+  border: solid 0.35em #4c3b33;
+}
+.app label {
+  display: block;
+  line-height: 1em;
+  text-align: center;
+  color: #756855;
+}
+.app.notif:before {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: solid 0.25em #F8F5E6;
+
+  background: #E53935;
+  transform: scale(0.8);
+  animation: notification 3s infinite;
+
+  position: absolute;
+  top: -0.2em;
+  left: -0.2em;
+  z-index: 1;
+}
+
+@media only screen and (min-width: 480px) {
+  #apps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  #apps {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  #title {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #home {
+    width: 450px;
+    padding: 3em;
+  }
+  #title {
+    font-size: 2rem;
+  }
+  #apps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@keyframes entree {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

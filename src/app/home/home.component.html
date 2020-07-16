@@ -1,0 +1,46 @@
+<div id="home">
+  <div id="top-infos">
+    <span><i class="icomoon ico-leaf" *ngIf="connected"></i> {{connected ? username : 'Bienvenue'}}</span>
+    <span *ngIf="connected">1 <i class="icomoon ico-turnip"></i> = 0 <i class="icomoon ico-bell"></i></span>
+    <span *ngIf="!connected"><i class="fas fa-signal"></i></span>
+  </div>
+
+  <span id="title">L' île aux navets</span>
+
+  <ul id="apps">
+    <li class="app" *ngIf="!connected">
+      <input id="btn-login" routerLink="/login" class="blue" type="image" alt="login" src="assets/apps-icons/login.png">
+      <label for="btn-login">Se connecter</label>
+    </li>
+    <li class="app" *ngIf="!connected">
+      <input id="btn-register" routerLink="/register" class="pink" type="image" alt="register" src="assets/apps-icons/register.png">
+      <label for="btn-register">S'inscrire</label>
+    </li>
+
+
+    <li class="app" *ngIf="connected">
+      <input id="btn-profile" routerLink="/profile/{{username}}" class="green" type="image" alt="profile" src="assets/apps-icons/profile.png">
+      <label for="btn-profile">Mon profil</label>
+    </li>
+    <li class="app" *ngIf="connected">
+      <input id="btn-turnip" routerLink="/turnip" class="gray" type="image" alt="turnip" src="assets/apps-icons/turnip.png">
+      <label for="btn-turnip">Cours du navet</label>
+    </li>
+    <li class="app" *ngIf="connected">
+      <input id="btn-friends" routerLink="/friends" class="orange" type="image" alt="friends" src="assets/apps-icons/friends.png">
+      <label for="btn-friends">Mes amis</label>
+    </li>
+    <li class="app" *ngIf="connected">
+      <input id="btn-everybody" routerLink="/everybody" class="blue" type="image" alt="everybody" src="assets/apps-icons/everybody.png">
+      <label for="btn-everybody">Tout le monde</label>
+    </li>
+    <li class="app" *ngIf="connected">
+      <input id="btn-gates" routerLink="/gates" class="yellow" type="image" alt="gates" src="assets/apps-icons/gates.png">
+      <label for="btn-gates">Ouvrir mes portes</label>
+    </li>
+    <li class="app" *ngIf="connected">
+      <input id="btn-logout" (click)="logout()" class="pink" type="image" alt="logout" src="assets/apps-icons/logout.png">
+      <label for="btn-logout">Se déconnecter</label>
+    </li>
+  </ul>
+</div>

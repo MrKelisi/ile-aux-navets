@@ -1,0 +1,24 @@
+#friends li {
+  padding: 1.25em;
+  display: block;
+  background: #F4F4F4;
+  margin: 0.75em 1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-radius: 1.5em;
+  color: #756855;
+}
+.friends-wrapper {
+  display: inline-block;
+  padding-left: 0.5em;
+  vertical-align: middle;
+}
+#friends li img {
+  height: 3em;
+  vertical-align: middle;
+}
+#friends li .name {
+  display: block;
+}
+#friends li .course {
+  color: #ccc4a8;
+}
