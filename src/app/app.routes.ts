@@ -1,5 +1,5 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-import { AuthGuardService } from '@core/services';
+import { AuthGuardHandler } from '@core/helpers';
 import { EverybodyComponent } from '@features/everybody/everybody.component';
 import { FriendsComponent } from '@features/friends/friends.component';
 import { GatesComponent } from '@features/gates/gates.component';
@@ -14,11 +14,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'turnip', component: TurnipComponent, canActivate: [AuthGuardService] },
-  { path: 'friends', component: FriendsComponent, canActivate: [AuthGuardService] },
-  { path: 'everybody', component: EverybodyComponent, canActivate: [AuthGuardService] },
-  { path: 'gates', component: GatesComponent, canActivate: [AuthGuardService] },
+  { path: 'profile/:username', component: ProfileComponent, canActivate: [AuthGuardHandler] },
+  { path: 'turnip', component: TurnipComponent, canActivate: [AuthGuardHandler] },
+  { path: 'friends', component: FriendsComponent, canActivate: [AuthGuardHandler] },
+  { path: 'everybody', component: EverybodyComponent, canActivate: [AuthGuardHandler] },
+  { path: 'gates', component: GatesComponent, canActivate: [AuthGuardHandler] },
 
   { path: '**', redirectTo: '' }
 ];
