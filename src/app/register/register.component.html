@@ -1,25 +1,25 @@
 <app-app-header [appColor]="'pink'" [appTitle]="'register'" [appName]="'S\'inscrire'"></app-app-header>
 
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
+  <div class="form-group input-ac">
     <label for="display_name">Prénom</label>
-    <input type="text" formControlName="display_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.display_name.errors }" />
+    <input type="text" formControlName="display_name" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.display_name.errors }" />
     <div *ngIf="submitted && f.display_name.errors" class="invalid-feedback">
-      <div *ngIf="f.display_name.errors.required">Le nom d'usage ne peut pas être vide.</div>
+      <div *ngIf="f.display_name.errors.required">Le prénom ne peut pas être vide.</div>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-ac">
     <label for="username">Nom d'utilisateur</label>
-    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <input type="text" formControlName="username" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
       <div *ngIf="f.username.errors.required">Le nom d'utilisateur ne peut pas être vide.</div>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-ac">
     <label for="password">Mot de passe</label>
-    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <input type="password" formControlName="password" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required">Le mot de passe ne peut pas être vide.</div>
     </div>

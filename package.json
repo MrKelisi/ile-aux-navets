@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --no-live-reload",
     "buildDev": "ng build --base-href /projets/ile-aux-navets/dist/ile-aux-navets/",
     "buildProd": "ng build --configuration production --base-href /ile-aux-navets/",
     "test": "ng test",

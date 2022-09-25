@@ -29,6 +29,48 @@ ul {
   /*background: repeating-linear-gradient(-30deg, #3EDAC2, #42e5cc 0.5em, #3EDAC2 1em);*/
 }
 
+
+form:has(.input-ac) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-ac {
+  position: relative;
+  padding: 1em 0.5em 0.25em;
+  font-size: 1.2em;
+}
+.input-ac > input {
+  font-size: inherit;
+  background: none;
+  outline: none;
+  border: none;
+  border-bottom: solid 2px #4c3b33aa;
+  padding: 4px 2px;
+}
+.input-ac > input:focus {
+  border-bottom: solid 3px #4c3b33;
+  margin-bottom: -1px;
+}
+.input-ac > label {
+  position: absolute;
+  left: 0.5em;
+  color: #4c3b33aa;
+  padding: 0 2px;
+  transform-origin: top left;
+  transition: all 0.1s ease-out;
+  pointer-events: none;
+}
+.input-ac:has(input:focus, input:valid) > label {
+  color: #4c3b33;
+  transition: all 0.15s ease-out;
+  transform: scale(0.65) translateY(-100%);
+}
+.input-ac .invalid-feedback {
+  color: #f44336;
+  font-size: 0.65em;
+}
+
 @font-face {
   font-family: "Icomoon";
   src: url("assets/fonts/icomoon.ttf") format("truetype");

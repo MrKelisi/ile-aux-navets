@@ -1,17 +1,17 @@
 <app-app-header [appColor]="'blue'" [appTitle]="'login'" [appName]="'Se connecter'"></app-app-header>
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
+  <div class="form-group input-ac">
     <label for="username">Nom d'utilisateur</label>
-    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <input type="text" formControlName="username" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
       <div *ngIf="f.username.errors.required">Le nom d'utilisateur ne peut pas être vide.</div>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group input-ac">
     <label for="password">Mot de passe</label>
-    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <input type="password" formControlName="password" required class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required">Le mot de passe ne peut pas être vide.</div>
     </div>
