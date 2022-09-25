@@ -1,7 +1,7 @@
 export enum Fruits {
-    APPLE,
-    CHERRY,
-    ORANGE,
-    PEACH,
-    PEAR
+    APPLES,
+    CHERRIES,
+    ORANGES,
+    PEACHES,
+    PEARS
 }
