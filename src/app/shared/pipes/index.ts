@@ -1,0 +1,1 @@
+export { I18nPipe } from './i18n.pipe';

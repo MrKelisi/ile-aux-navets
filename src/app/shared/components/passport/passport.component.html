@@ -1,0 +1,17 @@
+<div id="passport" *ngIf="user">
+  <div class="background-motif">
+    <img class="passport-picture" src="{{environment.api_url}}/photo/{{user.username}}" alt="{{user.username}}" />
+    <div class="passport-data">
+      <span class="name">{{user.display_name}}</span>
+      <span class="username"><i class="icomoon ico-leaf"></i> {{user.username}}</span>
+      <span class="mail" *ngIf="user.mail"><i class="fas fa-comment"></i> {{user.mail}}</span>
+      <span class="island" *ngIf="user.island"><i class="fas fa-umbrella-beach"></i> {{user.island}}</span>
+      <span class="fruits" *ngIf="user.fruits"><i class="fas fa-lemon"></i> {{user.fruits | i18n:'fruits'}}</span>
+    </div>
+  </div>
+  <div class="passport-stamp">
+    <img src="assets/img/stamp.png" alt="stamp" />
+  </div>
+</div>
+
+<app-passport-edit *ngIf="canEdit" [username]="user.username"></app-passport-edit>

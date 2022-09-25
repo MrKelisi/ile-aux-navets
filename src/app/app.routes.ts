@@ -1,14 +1,13 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-
-import { EverybodyComponent } from './everybody/everybody.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
-import { TurnipComponent } from './turnip/turnip.component';
-import { FriendsComponent } from './friends/friends.component';
-import { GatesComponent } from './gates/gates.component';
-import { AuthGuardService } from './_services/auth-guard.service';
+import { AuthGuardService } from '@core/services';
+import { EverybodyComponent } from '@features/everybody/everybody.component';
+import { FriendsComponent } from '@features/friends/friends.component';
+import { GatesComponent } from '@features/gates/gates.component';
+import { HomeComponent } from '@features/home/home.component';
+import { LoginComponent } from '@features/login/login.component';
+import { ProfileComponent } from '@features/profile/profile.component';
+import { RegisterComponent } from '@features/register/register.component';
+import { TurnipComponent } from '@features/turnip/turnip.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

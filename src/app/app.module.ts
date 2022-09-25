@@ -1,23 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AuthInterceptor } from '@core/helpers';
+
+import { EverybodyComponent } from '@features/everybody/everybody.component';
+import { FriendsComponent } from '@features/friends/friends.component';
+import { GatesComponent } from '@features/gates/gates.component';
+import { HomeComponent } from '@features/home/home.component';
+import { LoginComponent } from '@features/login/login.component';
+import { ProfileComponent } from '@features/profile/profile.component';
+import { RegisterComponent } from '@features/register/register.component';
+import { TurnipComponent } from '@features/turnip/turnip.component';
+
+import { AppHeaderComponent } from '@shared/components/app-header/app-header.component';
+import { PassportComponent } from '@shared/components/passport/passport.component';
+import { PassportEditComponent } from '@shared/components/passport-edit/passport-edit.component';
+import { I18nPipe } from '@shared/pipes';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
 import { AppRoutesModule } from './app.routes';
-import { EverybodyComponent } from './everybody/everybody.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AppHeaderComponent } from './_components/app-header/app-header.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TurnipComponent } from './turnip/turnip.component';
-import { FriendsComponent } from './friends/friends.component';
-import { GatesComponent } from './gates/gates.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { PassportComponent } from './_components/passport/passport.component';
-import { PassportEditComponent } from './_components/passport-edit/passport-edit.component';
-import {AuthInterceptor} from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import {AuthInterceptor} from './_helpers/auth.interceptor';
     GatesComponent,
     PassportComponent,
     PassportEditComponent,
+    I18nPipe,
   ],
   imports: [
     AppRoutesModule,
