@@ -1,9 +1,10 @@
+html, body { height: 100%; }
 body {
   margin: 0;
   padding: 0;
   min-width: 360px;
   min-height: 100vh;
-  font-family: Product-Sans, sans-serif;
+  font-family: Product-Sans, Roboto, "Helvetica Neue", sans-serif;
   background: repeating-linear-gradient(-10deg, #F5F2E3, #F5F2E3 1em, #f4eede 1em, #f4eede 1.65em);
 }
 ul {
