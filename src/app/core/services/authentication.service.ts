@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Auth } from '@core/models';
-import { environment } from 'src/environments/environment';
+import { RestService } from './rest.service';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
-
-  private url = `${environment.api_url}/auth/`;
+export class AuthenticationService extends RestService {
   private currentUserSubject: BehaviorSubject<Auth>;
   public currentUser: Observable<Auth>;
 
   constructor(private http: HttpClient) {
+    super(http);
     this.currentUserSubject = new BehaviorSubject<Auth>(JSON.parse(localStorage.getItem('auth')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -27,14 +25,9 @@ export class AuthenticationService {
     return this.currentUserValue ? this.currentUserValue.token : null;
   }
 
-  login(username, password) {
-    return this.http.post<any>(this.url + 'login', { username, password })
-      .pipe(map(auth => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('auth', JSON.stringify(auth));
-        this.currentUserSubject.next(auth);
-        return auth;
-      }));
+  login(username, password): Promise<void> {
+    return super.httpPost('auth/login', {username, password})
+      .then(this.handleAuthenticationResponse.bind(this));
   }
 
   logout() {
@@ -43,13 +36,14 @@ export class AuthenticationService {
     this.currentUserSubject.next(null);
   }
 
-  register(username, display_name, password) {
-    return this.http.post<any>(this.url + 'register', { username, display_name, password })
-      .pipe(map(auth => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('auth', JSON.stringify(auth));
-        this.currentUserSubject.next(auth);
-        return auth;
-      }));
+  register(username, display_name, password): Promise<void> {
+    return super.httpPost('auth/register', {username, display_name, password})
+      .then(this.handleAuthenticationResponse.bind(this));
+  }
+
+  private handleAuthenticationResponse(auth: Auth) {
+    // store user details and jwt token in local storage to keep user logged in between page refreshes
+    localStorage.setItem('auth', JSON.stringify(auth));
+    this.currentUserSubject.next(auth);
   }
 }

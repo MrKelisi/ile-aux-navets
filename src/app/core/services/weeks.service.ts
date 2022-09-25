@@ -1,43 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { AsyncSubject } from 'rxjs';
+import { Week } from '@core/models';
+import { RestService } from './rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class WeeksService {
+export class WeeksService extends RestService {
 
-  private url = `${environment.api_url}/weeks`;
-
-  constructor(private http: HttpClient) {}
-
-  findAll(username: string): any {
-    const subject = new AsyncSubject();
-
-    this.http
-      .get(this.url + '/' + username)
-      .subscribe(
-        data => subject.next(data),
-        error => subject.error(error),
-        () => subject.complete()
-      );
-
-    return subject;
+  constructor(private http: HttpClient) {
+    super(http);
   }
 
-  find(username: string, date: Date): any {
-    const subject = new AsyncSubject();
+  findAll(username: string): Promise<Week[]> {
+    return super.httpGet(`weeks/${username}`);
+  }
 
-    this.http
-      .get(this.url + '/' + username + '/' + date.toISOString().split('T')[0])
-      .subscribe(
-        data => subject.next(data),
-        error => subject.error(error),
-        () => subject.complete()
-      );
-
-    return subject;
+  find(username: string, date: Date): Promise<Week> {
+    return super.httpGet(`weeks/${username}/${date.toISOString().split('T')[0]}`);
   }
 
 }

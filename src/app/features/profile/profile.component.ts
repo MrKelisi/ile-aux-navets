@@ -21,17 +21,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     const username = this.route.snapshot.paramMap.get('username');
 
-    this.usersService.find(username).subscribe(
-      data => {
-        this.user = data;
-      },
-      error => {
+    this.usersService.find(username)
+      .then(user => this.user = user)
+      .catch(error => {
         console.log(error);
         this.router.navigate(['/']);
-      },
-      () => {}
-    );
+      });
   }
 
 }
-

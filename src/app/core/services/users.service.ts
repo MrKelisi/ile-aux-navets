@@ -1,54 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '@core/models';
-import { environment } from 'src/environments/environment';
-import { AsyncSubject } from 'rxjs';
+import { RestService } from './rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class UsersService extends RestService {
 
-  private url = `${environment.api_url}/users`;
-
-  constructor(private http: HttpClient) {}
-
-  findAll(): any {
-    const subject = new AsyncSubject();
-
-    this.http
-      .get(this.url)
-      .subscribe(
-        data => subject.next(data),
-        error => subject.error(error),
-        () => subject.complete()
-      );
-
-    return subject;
+  constructor(private http: HttpClient) {
+    super(http);
   }
 
-  find(username: string): any {
-    const subject = new AsyncSubject();
-
-    this.http
-      .get(this.url + '/' + username)
-      .subscribe(
-        data => subject.next(data),
-        error => subject.error(error),
-        () => subject.complete()
-      );
-
-    return subject;
+  findAll(): Promise<User[]> {
+    return super.httpGet('users');
   }
 
-  update(username: string, user: User): any {
-    return this.http
-      .put<any>(this.url + '/' + username, user);
+  find(username: string): Promise<User> {
+    return super.httpGet(`users/${username}`);
   }
 
-  delete(username: string): any {
-    return this.http
-      .delete(this.url + '/' + username);
+  update(username: string, user: User): Promise<User> {
+    return super.httpPut(`users/${username}`, user);
+  }
+
+  delete(username: string): Promise<void> {
+    return super.httpDelete(`users/${username}`);
   }
 
   findFriends(username: string): any {

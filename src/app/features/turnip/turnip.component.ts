@@ -23,15 +23,9 @@ export class TurnipComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.turnipsService.find('mrkelisi', this.dateAchat).subscribe(
-      data => {
-        this.week = data;
-      },
-      error => {
-        console.log(error);
-      },
-      () => {}
-    );
+    this.turnipsService.find('mrkelisi', this.dateAchat)
+      .then(week => this.week = week)
+      .catch(error => console.log(error));
   }
 
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthenticationService } from "@core/services";
-import { first } from "rxjs/operators";
 
 @Component({
   selector: 'app-register',
@@ -47,18 +46,15 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.authenticationService.register(this.f.username.value, this.f.display_name.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate(['/']);
-        },
-        error => {
-          this.loading = false;
-          switch (error.status) {
-            case 409: this.error = 'Cet utilisateur existe déjà.'; break;
-            default: this.error = 'Une erreur est survenue.';
-          }
-        });
+      .then(_ => this.router.navigate(['/']))
+      .catch(error => {
+        switch (error.status) {
+          case 409: this.error = 'Cet utilisateur existe déjà.'; break;
+          case 503: this.error = 'L\'application n\'est pas disponible pour le moment.'; break;
+          default: this.error = 'Une erreur est survenue.';
+        }
+      })
+      .then(_ => this.loading = false);
   }
 
 }

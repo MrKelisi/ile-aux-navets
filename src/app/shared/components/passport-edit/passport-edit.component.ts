@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Face } from '@core/models';
 import { FacesService } from '@core/services';
 import { environment } from 'src/environments/environment';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-passport-edit',
@@ -25,15 +24,8 @@ export class PassportEditComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes): void {
     this.facesService.find(this.username)
-      .subscribe(
-      data => {
-        this.face = data;
-      },
-      error => {
-        console.log(error);
-      },
-      () => {}
-    );
+      .then(face => this.face = face)
+      .catch(error => console.log(error));
   }
 
   plus(input) {
@@ -46,15 +38,8 @@ export class PassportEditComponent implements OnInit, OnChanges {
 
   onSubmit() {
     this.facesService.update(this.username, this.face)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate(['/']);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+      .then(face => this.router.navigate(['/']))
+      .catch(error => console.log(error));
   }
 
 }

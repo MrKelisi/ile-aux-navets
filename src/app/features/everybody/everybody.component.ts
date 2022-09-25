@@ -20,16 +20,9 @@ export class EverybodyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.usersService.findAll().subscribe(
-      data => {
-        this.users = data;
-      },
-      error => {
-        console.log(error);
-      },
-      () => {}
-    );
-
+    this.usersService.findAll()
+      .then(users => this.users = users)
+      .catch(error => console.log(error));
   }
 
 }
