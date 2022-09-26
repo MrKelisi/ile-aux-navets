@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, LowerCasePipe } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
@@ -27,7 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { AppHeaderComponent, PassportComponent, PassportEditComponent } from './components';
+import { AppHeaderComponent, PassportComponent, PassportEditComponent, SnackbarToastComponent } from './components';
 import { OpenGatesDialog } from "./dialogs";
 import { I18nPipe } from "./pipes";
 import { DialogService, SnackbarService } from "./services";
@@ -39,6 +39,7 @@ const sharedComponents = [
 ];
 
 const sharedEntryComponents = [
+  SnackbarToastComponent,
   OpenGatesDialog
 ];
 
@@ -106,6 +107,7 @@ const materialModules = [
     ...sharedPipes
   ],
   providers: [
+    LowerCasePipe,
     ...sharedPipes,
     ...sharedServices
   ],

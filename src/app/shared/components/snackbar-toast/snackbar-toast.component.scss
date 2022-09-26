@@ -1,0 +1,18 @@
+::ng-deep snack-bar-container {
+  &.success {
+    background-color: mediumseagreen;
+  }
+  &.warn {
+    background-color: darkorange;
+  }
+  &.error {
+    background-color: indianred;
+  }
+}
+
+.toast {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  color: #fff !important;
+}
