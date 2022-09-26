@@ -27,19 +27,23 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { AppHeaderComponent, PassportComponent, PassportEditComponent, SnackbarToastComponent } from './components';
-import { OpenGatesDialog } from "./dialogs";
+import { AppHeaderComponent, DialogContainerComponent, FormErrorComponent, PassportComponent, PassportEditComponent, SnackbarToastComponent } from './components';
+import { AlertDialog, ConfirmDialog, OpenGatesDialog } from "./dialogs";
 import { I18nPipe } from "./pipes";
 import { DialogService, SnackbarService } from "./services";
 
 const sharedComponents = [
   AppHeaderComponent,
+  FormErrorComponent,
   PassportComponent,
   PassportEditComponent
 ];
 
 const sharedEntryComponents = [
+  DialogContainerComponent,
   SnackbarToastComponent,
+  AlertDialog,
+  ConfirmDialog,
   OpenGatesDialog
 ];
 

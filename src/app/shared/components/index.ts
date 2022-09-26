@@ -1,4 +1,8 @@
 export { AppHeaderComponent } from './app-header/app-header.component'
+export { DialogButton } from './dialog-container/dialog-button.class'
+export { DialogConfig } from './dialog-container/dialog-config.class'
+export { DialogContainerComponent } from './dialog-container/dialog-container.component'
+export { FormErrorComponent } from './form-error/form-error.component'
 export { PassportComponent } from './passport/passport.component'
 export { PassportEditComponent } from './passport-edit/passport-edit.component'
 export { SnackbarToastComponent } from './snackbar-toast/snackbar-toast.component'

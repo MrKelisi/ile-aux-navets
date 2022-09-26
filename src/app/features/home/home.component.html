@@ -35,7 +35,7 @@
       <label for="btn-everybody">Tout le monde</label>
     </li>
     <li class="app" *ngIf="connected">
-      <input id="btn-gates" routerLink="/gates" class="yellow" type="image" alt="gates" src="assets/apps-icons/gates.png">
+      <input id="btn-gates" (click)="openGates()" class="yellow" type="image" alt="gates" src="assets/apps-icons/gates.png">
       <label for="btn-gates">Ouvrir mes portes</label>
     </li>
     <li class="app" *ngIf="connected">

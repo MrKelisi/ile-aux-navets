@@ -1,0 +1,13 @@
+<h1 mat-dialog-title md-dialog-title *ngIf="title">
+    {{ title }}
+</h1>
+
+<div mat-dialog-content [ngClass]="{'loading': loading}">
+    <ng-content></ng-content>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button *ngFor="let button of buttons; let i = index"
+        mat-button [color]="i > 0 ? 'accent' : 'primary'" type="button" (click)="close(button)" [disabled]="!valid && i > 0"
+    >{{ button.label }}</button>
+</div>

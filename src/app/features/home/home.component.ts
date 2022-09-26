@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '@core/services';
+import { DialogConfig } from '@shared/components';
+import { OpenGatesDialog } from '@shared/dialogs';
+import { DialogService, SnackbarService } from '@shared/services';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +17,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
+    private dialogService: DialogService,
+    private snackbarService: SnackbarService,
     private router: Router
   ) {
     this.connected = false;
@@ -24,6 +29,19 @@ export class HomeComponent implements OnInit {
       this.connected = true;
       this.username = this.authenticationService.currentUserValue.username;
     }
+  }
+
+  openGates() {
+    const config = new DialogConfig({
+      title: 'Ouvrir mes portes',
+      confirmLabel: 'Ouvrir'
+    });
+
+    this.dialogService.confirm(config, OpenGatesDialog).afterClosed().subscribe(confirm => {
+      if (confirm) {
+        this.snackbarService.success('Vos portes sont ouvertes !');
+      }
+    })
   }
 
   logout() {

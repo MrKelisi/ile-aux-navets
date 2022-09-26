@@ -1,0 +1,18 @@
+<dialog-container [title]="title" [buttons]="buttons" [valid]="form?.valid">
+    <p>
+        En ouvrant les portes de mon île, j'accepte que n'importe quel utilisateur de
+        <em>L'île aux navets</em> puisse voir mon code Dodo et se connecter à ma partie.
+    </p>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Code Dodo</mat-label>
+            <input matInput type="text" formControlName="dodoCode" placeholder="C4R15" maxlength="5" autocomplete="off" required>
+            <mat-error form-error [errors]="form.get('dodoCode').errors"></mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Prix du navet</mat-label>
+            <input matInput type="text" formControlName="turnipPrice" placeholder="420" maxlength="4" autocomplete="off">
+            <mat-error form-error [errors]="form.get('turnipPrice').errors"></mat-error>
+        </mat-form-field>
+    </form>
+</dialog-container>

@@ -18,6 +18,17 @@ export class I18nService {
                     case 'PEARS': return 'Poires';
                 }
                 break;
+            case 'errors':
+                switch(data) {
+                    case 'required': return 'Requis';
+                    case 'pattern': return 'Format incorrect';
+                    case 'min': return 'Trop petit';
+                    case 'max': return 'Trop grand';
+                    case 'minlength': return 'Longueur minimale non-atteinte';
+                    case 'maxlength': return 'Longueur maximale atteinte';
+                    default: return data;
+                }
+                break;
         }
 
         return '';
