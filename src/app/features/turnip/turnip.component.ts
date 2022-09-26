@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Week, Months } from "@core/models";
 import { WeeksService } from "@core/services";
+import { SnackbarService } from "@shared/services";
 
 @Component({
   selector: 'app-turnip',
@@ -13,7 +14,10 @@ export class TurnipComponent implements OnInit {
   week: Week;
   Months: Months;
 
-  constructor(private turnipsService: WeeksService) {
+  constructor(
+    private snackbarService: SnackbarService,
+    private turnipsService: WeeksService
+  ) {
     this.dateAchat = new Date();
     this.setToLastSunday(this.dateAchat);
   }
@@ -25,7 +29,7 @@ export class TurnipComponent implements OnInit {
   ngOnInit(): void {
     this.turnipsService.find('mrkelisi', this.dateAchat)
       .then(week => this.week = week)
-      .catch(error => console.log(error));
+      .catch(error => this.snackbarService.error(error));
   }
 
 }

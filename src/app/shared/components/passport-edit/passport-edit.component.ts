@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Face } from '@core/models';
 import { FacesService } from '@core/services';
+import { SnackbarService } from '@shared/services';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,7 +18,8 @@ export class PassportEditComponent implements OnInit, OnChanges {
 
   constructor(
     private facesService: FacesService,
-    private router: Router
+    private router: Router,
+    private snackbarService: SnackbarService,
   ) { }
 
   ngOnInit(): void {}
@@ -25,7 +27,7 @@ export class PassportEditComponent implements OnInit, OnChanges {
   ngOnChanges(changes): void {
     this.facesService.find(this.username)
       .then(face => this.face = face)
-      .catch(error => console.log(error));
+      .catch(error => this.snackbarService.error(error));
   }
 
   plus(input) {
@@ -38,8 +40,11 @@ export class PassportEditComponent implements OnInit, OnChanges {
 
   onSubmit() {
     this.facesService.update(this.username, this.face)
-      .then(face => this.router.navigate(['/']))
-      .catch(error => console.log(error));
+      .then(face => {
+        this.snackbarService.success("Votre profil a bien été sauvegardé.");
+        this.router.navigate(['/']);
+      })
+      .catch(error => this.snackbarService.error(error));
   }
 
 }

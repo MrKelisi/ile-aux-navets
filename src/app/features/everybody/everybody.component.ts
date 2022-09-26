@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { User } from "@core/models";
 import { UsersService } from "@core/services";
+import { SnackbarService } from "@shared/services";
 import { environment } from "src/environments/environment";
 
 @Component({
@@ -15,14 +15,14 @@ export class EverybodyComponent implements OnInit {
   users: User[] = [];
 
   constructor(
-    private http: HttpClient,
+    private snackbarService: SnackbarService,
     private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
     this.usersService.findAll()
       .then(users => this.users = users)
-      .catch(error => console.log(error));
+      .catch(error => this.snackbarService.error(error));
   }
 
 }

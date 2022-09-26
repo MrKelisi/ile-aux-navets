@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { User } from "@core/models";
 import { UsersService } from "@core/services";
+import { SnackbarService } from "@shared/services";
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +16,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private snackbarService: SnackbarService,
     private usersService: UsersService
   ) { }
 
@@ -24,7 +26,7 @@ export class ProfileComponent implements OnInit {
     this.usersService.find(username)
       .then(user => this.user = user)
       .catch(error => {
-        console.log(error);
+        this.snackbarService.error(error);
         this.router.navigate(['/']);
       });
   }
